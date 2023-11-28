@@ -1,4 +1,2 @@
-export declare function createArifpayProviders(apiKey: string, expiryDate: string): {
-    provide: string;
-    useValue: string;
-}[];
+import { Provider } from '@nestjs/common';
+export declare function createArifpayProviders(options: string): Provider[];

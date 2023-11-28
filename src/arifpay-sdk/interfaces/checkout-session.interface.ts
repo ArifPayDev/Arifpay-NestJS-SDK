@@ -4,6 +4,7 @@ export interface ICreateCheckOutSession {
   paymentMethods: string[];
   items: IArifpayCheckoutItem[];
   beneficiaries: IArifpayBeneficiaries[];
+  expireDate: string;
 }
 
 export interface IArifpayCheckoutItem {

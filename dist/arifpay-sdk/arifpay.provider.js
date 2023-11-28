@@ -2,16 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createArifpayProviders = void 0;
 const arifpay_constants_1 = require("./arifpay.constants");
-function createArifpayProviders(apiKey, expiryDate) {
+const arifpay_service_1 = require("./arifpay.service");
+function createArifpayProviders(options) {
     return [
         {
             provide: arifpay_constants_1.ARIFPAY_API_KEY,
-            useValue: apiKey,
+            useValue: options,
         },
-        {
-            provide: arifpay_constants_1.SESSION_EXPIRY_DATE,
-            useValue: expiryDate,
-        },
+        arifpay_service_1.ArifPayService,
     ];
 }
 exports.createArifpayProviders = createArifpayProviders;

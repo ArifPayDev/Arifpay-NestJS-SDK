@@ -9,17 +9,17 @@ var ArifpaySDKModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ArifpaySDKModule = void 0;
 const common_1 = require("@nestjs/common");
-const arifpay_service_1 = require("./arifpay.service");
 const axios_1 = require("@nestjs/axios");
+const arifpay_service_1 = require("./arifpay.service");
 let ArifpaySDKModule = ArifpaySDKModule_1 = class ArifpaySDKModule {
-    static register(apiKey, expiryDate) {
+    static register(options) {
         return {
             module: ArifpaySDKModule_1,
             providers: [
                 {
                     provide: arifpay_service_1.ArifPayService,
                     useFactory: (httpService) => {
-                        return new arifpay_service_1.ArifPayService(apiKey, expiryDate, httpService);
+                        return new arifpay_service_1.ArifPayService(options, httpService);
                     },
                     inject: [axios_1.HttpService],
                 },

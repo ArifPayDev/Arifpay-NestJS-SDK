@@ -1,10 +1,9 @@
-import { ICreateCheckOutSession } from './arifpay-sdk/interfaces/checkout-session.interface';
+import { ICreateCheckOutSession } from './interfaces/checkout-session.interface';
 import { HttpService } from '@nestjs/axios';
 export declare class ArifPayService {
     private arifpayApiKey;
-    private sessionExpiryDate;
-    private readonly httpService?;
-    constructor(arifpayApiKey: string, sessionExpiryDate: string, httpService?: HttpService);
+    private readonly httpService;
+    constructor(arifpayApiKey: string, httpService: HttpService);
     generateNewNonce(): Promise<string>;
     validateUserInput(checkoutObj: ICreateCheckOutSession): Promise<{
         phone?: string;
@@ -22,6 +21,7 @@ export declare class ArifPayService {
             bank?: string;
             amount?: number;
         }[];
+        expireDate?: string;
     }>;
     createCheckoutSession(createCheckoutSession: ICreateCheckOutSession): Promise<any>;
 }

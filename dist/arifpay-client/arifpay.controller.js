@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ArifpayController = void 0;
 const common_1 = require("@nestjs/common");
-const arifpay_service_1 = require("../arifpay.service");
+const arifpay_service_1 = require("../arifpay-sdk/arifpay.service");
 let ArifpayController = class ArifpayController {
     constructor(arifPayService) {
         this.arifPayService = arifPayService;

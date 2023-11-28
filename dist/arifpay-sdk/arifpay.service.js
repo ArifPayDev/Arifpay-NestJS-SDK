@@ -8,21 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ArifPayService = void 0;
 const common_1 = require("@nestjs/common");
-const arifpay_constants_1 = require("./arifpay-sdk/arifpay.constants");
 const uuid_1 = require("uuid");
-const checkout_session_dto_1 = require("./arifpay-sdk/dto/checkout-session.dto");
-const transactionUrls_enum_1 = require("./arifpay-sdk/enums/transactionUrls.enum");
+const checkout_session_dto_1 = require("./dto/checkout-session.dto");
+const transactionUrls_enum_1 = require("./enums/transactionUrls.enum");
 const axios_1 = require("@nestjs/axios");
 let ArifPayService = class ArifPayService {
-    constructor(arifpayApiKey, sessionExpiryDate, httpService) {
+    constructor(arifpayApiKey, httpService) {
         this.arifpayApiKey = arifpayApiKey;
-        this.sessionExpiryDate = sessionExpiryDate;
         this.httpService = httpService;
     }
     async generateNewNonce() {
@@ -42,10 +37,10 @@ let ArifPayService = class ArifPayService {
         return data;
     }
     async createCheckoutSession(createCheckoutSession) {
-        var _a;
+        var _a, _b, _c, _d, _e, _f, _g;
         try {
             await this.validateUserInput(createCheckoutSession);
-            let { phone, email, paymentMethods, items, beneficiaries } = createCheckoutSession;
+            let { phone, email, paymentMethods, items, beneficiaries, expireDate } = createCheckoutSession;
             let data = {
                 cancelUrl: transactionUrls_enum_1.TransactionUrls.CANCEL,
                 phone: phone,
@@ -55,7 +50,7 @@ let ArifPayService = class ArifPayService {
                 notifyUrl: transactionUrls_enum_1.TransactionUrls.NOTIFY,
                 successUrl: transactionUrls_enum_1.TransactionUrls.SUCCESS,
                 paymentMethods: paymentMethods,
-                expireDate: this.sessionExpiryDate,
+                expireDate: expireDate,
                 items: items,
                 beneficiaries: beneficiaries,
                 lang: 'EN',
@@ -66,7 +61,7 @@ let ArifPayService = class ArifPayService {
                     'x-arifpay-key': this.arifpayApiKey,
                 },
             });
-            return response.data;
+            return response === null || response === void 0 ? void 0 : response.data;
         }
         catch (error) {
             if (error instanceof common_1.BadRequestException) {
@@ -77,15 +72,15 @@ let ArifPayService = class ArifPayService {
                     throw new common_1.HttpException({
                         status: common_1.HttpStatus.INTERNAL_SERVER_ERROR,
                         error: 'There was an error processing the request',
-                        message: error.response.data.msg,
-                        data: error.response.data.data,
+                        message: (_c = (_b = error.response) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.msg,
+                        data: (_e = (_d = error.response) === null || _d === void 0 ? void 0 : _d.data) === null || _e === void 0 ? void 0 : _e.data,
                     }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
                 }
                 else {
                     throw new common_1.HttpException({
                         status: common_1.HttpStatus.INTERNAL_SERVER_ERROR,
                         error: 'There was an error processing the request',
-                        message: error.response.data.msg,
+                        message: (_g = (_f = error.response) === null || _f === void 0 ? void 0 : _f.data) === null || _g === void 0 ? void 0 : _g.msg,
                     }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             }
@@ -95,8 +90,6 @@ let ArifPayService = class ArifPayService {
 exports.ArifPayService = ArifPayService;
 exports.ArifPayService = ArifPayService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)(arifpay_constants_1.ARIFPAY_API_KEY)),
-    __param(1, (0, common_1.Inject)(arifpay_constants_1.SESSION_EXPIRY_DATE)),
-    __metadata("design:paramtypes", [String, String, axios_1.HttpService])
+    __metadata("design:paramtypes", [String, axios_1.HttpService])
 ], ArifPayService);
 //# sourceMappingURL=arifpay.service.js.map

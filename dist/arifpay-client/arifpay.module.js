@@ -9,15 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ArifpayModule = void 0;
 const common_1 = require("@nestjs/common");
 const arifpay_controller_1 = require("./arifpay.controller");
-const arifpay_sdk_module_1 = require("../arifpay-sdk.module");
+const arifpay_sdk_module_1 = require("../arifpay-sdk/arifpay-sdk.module");
 let ArifpayModule = class ArifpayModule {
 };
 exports.ArifpayModule = ArifpayModule;
 exports.ArifpayModule = ArifpayModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            arifpay_sdk_module_1.ArifpaySDKModule.register('m2ocgQ8pADsYlM4KUz7x2TKM6FEj5J6F', '2025-02-01T03:45:27'),
-        ],
+        imports: [arifpay_sdk_module_1.ArifpaySDKModule.register('m2ocgQ8pADsYlM4KUz7x2TKM6FEj5J6F')],
         controllers: [arifpay_controller_1.ArifpayController],
     })
 ], ArifpayModule);

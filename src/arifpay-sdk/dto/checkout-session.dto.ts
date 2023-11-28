@@ -23,4 +23,5 @@ export const CreateCheckOutSessionDto = z.object({
   paymentMethods: z.array(IsNotEmptyString),
   items: z.array(ArifpayCheckoutItemDto),
   beneficiaries: z.array(ArifpayBeneficiariesDto),
+  expireDate: z.string(),
 });

@@ -67,6 +67,7 @@ export declare const CreateCheckOutSessionDto: z.ZodObject<{
         bank?: string;
         amount?: number;
     }>, "many">;
+    expireDate: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     phone?: string;
     email?: string;
@@ -83,6 +84,7 @@ export declare const CreateCheckOutSessionDto: z.ZodObject<{
         bank?: string;
         amount?: number;
     }[];
+    expireDate?: string;
 }, {
     phone?: string;
     email?: string;
@@ -99,4 +101,5 @@ export declare const CreateCheckOutSessionDto: z.ZodObject<{
         bank?: string;
         amount?: number;
     }[];
+    expireDate?: string;
 }>;

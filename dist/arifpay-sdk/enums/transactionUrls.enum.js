@@ -8,6 +8,6 @@ var TransactionUrls;
     TransactionUrls["NOTIFY"] = "https://gateway.arifpay.net/test/callback";
     TransactionUrls["SUCCESS"] = "http://example.com";
     TransactionUrls["PAYMENT"] = "https://checkout.arifpay.org/checkout/";
-    TransactionUrls["CHECKOUT"] = "http://196.189.44.37:2000/api/sandbox/checkout/session";
+    TransactionUrls["CHECKOUT"] = "https://gateway.arifpay.org/api/sandbox/checkout/session";
 })(TransactionUrls || (exports.TransactionUrls = TransactionUrls = {}));
 //# sourceMappingURL=transactionUrls.enum.js.map

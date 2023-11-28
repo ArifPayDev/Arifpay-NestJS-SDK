@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ArifPayService } from '../arifpay.service';
+import { ArifPayService } from 'src/arifpay-sdk/arifpay.service';
 import { ICreateCheckOutSession } from 'src/arifpay-sdk/interfaces/checkout-session.interface';
 
 @Controller('arifpay')

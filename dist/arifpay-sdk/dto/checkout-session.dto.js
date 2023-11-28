@@ -23,5 +23,6 @@ exports.CreateCheckOutSessionDto = zod_1.z.object({
     paymentMethods: zod_1.z.array(IsNotEmptyString),
     items: zod_1.z.array(exports.ArifpayCheckoutItemDto),
     beneficiaries: zod_1.z.array(exports.ArifpayBeneficiariesDto),
+    expireDate: zod_1.z.string(),
 });
 //# sourceMappingURL=checkout-session.dto.js.map

@@ -1,4 +1,4 @@
-import { ArifPayService } from '../arifpay.service';
+import { ArifPayService } from 'src/arifpay-sdk/arifpay.service';
 import { ICreateCheckOutSession } from 'src/arifpay-sdk/interfaces/checkout-session.interface';
 export declare class ArifpayController {
     private readonly arifPayService;
